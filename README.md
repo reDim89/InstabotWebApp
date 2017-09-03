@@ -11,7 +11,7 @@ This is a simple <a href="http://flask.pocoo.org/">Flask</a> web app to run <a h
 3) Download ZIP and extract
 
 4) In command line type the following commands:
-
-    $ export FLASK_APP=run.py
-    $ flask run
-
+'''
+$ export FLASK_APP=run.py
+$ flask run
+'''
