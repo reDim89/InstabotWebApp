@@ -46,7 +46,6 @@ def index():
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
-    global bot
     form = LogoutForm()
     if request.method == 'POST':
         stopBot()
