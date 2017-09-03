@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Please log in to run bot</h1>
+	<form section='' method='POST' name='login'>
+		<p>
+			Login:<br>
+			{{ form.login }}
+		</p>
+		<p>
+			Password:<br>
+			{{ form.password }}
+		</p>
+		<p>
+			Likes per day:<br>
+			{{ form.like_per_day }}
+		</p>
+		<p>
+			Comments per day:<br>
+			{{ form.comments_per_day }}
+		</p>
+		<p>
+			Follow per day:<br>
+			{{ form.follow_per_day }}
+		</p>
+		<button type="submit">Login and run bot</button>
+	</form>
+{% endblock %}
