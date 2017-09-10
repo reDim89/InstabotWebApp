@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!flask/bin/python
 # -*- coding: utf-8 -*-
 
 import random
 
-from post_page import get_user_id_post_page
-from username_checker import username_checker
+from src.post_page import get_user_id_post_page
+from src.username_checker import username_checker
 
 
 def likers_protocol(self):

@@ -1,28 +1,28 @@
 #!flask/bin/python
 # -*- coding: utf-8 -*-
-import os
-import sys
 import time
-import threading
-
-sys.path.append(os.path.join(sys.path[0], 'src'))
+import os
 
 from src.check_status import check_status
 from src.feed_scanner import feed_scanner
 from src.follow_protocol import follow_protocol
 from src.instabot import InstaBot
 from src.unfollow_protocol import unfollow_protocol
+from src.stoppable_thread import StoppableThread
 
 from app import app
 from flask import render_template, flash, request, redirect, url_for
-from .forms import LoginForm, LogoutForm
+from .forms import LoginForm, ControlPanelForm
 
 bot = None
+thread = None
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    global bot
+    global bot, thread
+
     form = LoginForm()
     if request.method == 'POST':
         login = request.form['login']
@@ -36,29 +36,49 @@ def index():
             like_per_day=like_per_day,
             comments_per_day=comments_per_day,
             follow_per_day=follow_per_day)
-        t = threading.Thread(target=runBot)
-        t.start()
+        thread = StoppableThread(target=runBot)
+        thread.daemon = True
+        thread.start()
         flash('Bot is running!')
-        return redirect(url_for('logout'))
+        return redirect(url_for('mybot'))
 
     return render_template('index.html', title='InstabotWebApp', form=form)
 
 
-@app.route('/logout', methods=['GET', 'POST'])
-def logout():
-    form = LogoutForm()
+@app.route('/mybot', methods=['GET', 'POST'])
+def mybot():
+    global bot, thread
+    form = ControlPanelForm()
     if request.method == 'POST':
-        stopBot()
-        flash('Bot stopped!')
-        return redirect(url_for('index'))
+        if form.refresh.data and bot:
+            with open(bot.log_full_path, 'r') as log:
+                for line in log:
+                    flash(line)
+            return redirect(url_for('mybot'))
+        elif form.logout.data and bot:
+            os.remove(bot.log_full_path)
+            bot.exit_no_cleanup()
+            thread.stop()
+            flash('Bot stopped!')
+            return redirect(url_for('index'))
+        else:
+            flash('Something went wrong... Please log in again')
+            return redirect(url_for('index'))
 
-    return render_template('logout.html', title='Logout from Instabot', form=form)
+    return render_template('mybot.html',
+                           title='Instabot Control Panel',
+                           form=form)
+
 
 def runBot():
 
-    global bot
+    global bot, thread
 
     while True:
+
+        if thread:
+            if thread.stopped():
+                thread.join()
 
         #print("# MODE 0 = ORIGINAL MODE BY LEVPASHA")
         #print("## MODE 1 = MODIFIED MODE BY KEMONG")
@@ -117,8 +137,3 @@ def runBot():
 
         else:
             print("Wrong mode!")
-
-
-def stopBot():
-    global bot
-    bot.logout()

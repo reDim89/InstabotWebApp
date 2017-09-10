@@ -1,8 +1,10 @@
+#!flask/bin/python
+
 import random
 import time
 
-from instabot import InstaBot
-from userinfo import UserInfo
+from src.instabot import InstaBot
+from src.userinfo import UserInfo
 
 #use userinfo
 ui = UserInfo()

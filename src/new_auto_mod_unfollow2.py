@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!flask/bin/python
 # -*- coding: utf-8 -*-
-from new_unfollow import new_unfollow
+from src.new_unfollow import new_unfollow
 
 
 def new_auto_mod_unfollow2(self):

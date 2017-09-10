@@ -1,0 +1,173 @@
+
+/*
+ * Centering the body content
+ */
+
+}
+div {
+  padding: 10px 10px 30px 0;
+  background-color: #F5F5F5;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+/*
+ * Styling header
+ */
+
+
+h1 {
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 0px 20px 0px;
+    color: #5C5C5C;
+    font-size:x-large;
+}
+
+/*
+ * Styling code blocks
+ */
+
+pre {
+        font-family: "Courier 10 Pitch", Courier, monospace;
+        font-size: 95%;
+        line-height: 140%;
+        white-space: pre;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -o-pre-wrap;
+    }       
+    
+    code {
+        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+        font-size: 95%;
+        line-height: 140%;
+        white-space: pre;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -o-pre-wrap;
+        background: #faf8f0;
+    }
+    
+    #content code {
+        display: block;
+        padding: 0.5em 1em;
+        border: 1px solid #bebab0;
+    }
+/*
+ * Styling form
+ */
+
+.main-form{
+    max-width:400px;
+    margin:50px auto;
+    background:#fff;
+    border-radius:2px;
+    padding:20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+.main-form h1{
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 0px 20px 0px;
+    color: #5C5C5C;
+    font-size:x-large;
+}
+.main-form ul{
+    list-style:none;
+    padding:0;
+    margin:0;   
+}
+.main-form li{
+    display: block;
+    padding: 9px;
+    border:1px solid #DDDDDD;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+.main-form li:last-child{
+    border:none;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.main-form li > label{
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: #FFFFFF;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #B9B9B9;
+    font-size: 14px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main-form input[type="text"],
+.main-form input[type="date"],
+.main-form input[type="datetime"],
+.main-form input[type="email"],
+.main-form input[type="number"],
+.main-form input[type="search"],
+.main-form input[type="time"],
+.main-form input[type="url"],
+.main-form input[type="password"],
+.main-form textarea,
+.main-form select 
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+.main-form input[type="text"]:focus,
+.main-form input[type="date"]:focus,
+.main-form input[type="datetime"]:focus,
+.main-form input[type="email"]:focus,
+.main-form input[type="number"]:focus,
+.main-form input[type="search"]:focus,
+.main-form input[type="time"]:focus,
+.main-form input[type="url"]:focus,
+.main-form input[type="password"]:focus,
+.main-form textarea:focus,
+.main-form select:focus 
+{
+}
+.main-form li > span{
+    background: #F3F3F3;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: #C0C0C0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.main-form textarea{
+    resize:none;
+}
+.main-form input[type="submit"],
+.main-form input[type="button"]{
+    background: #2471FF;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 3px solid #5994FF;
+    border-radius: 3px;
+    color: #D2E2FF;
+}
+.main-form input[type="submit"]:hover,
+.main-form input[type="button"]:hover{
+    background: #6B9FFF;
+    color:#fff;
+}
+</style>

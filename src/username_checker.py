@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!flask/bin/python
 # -*- coding: utf-8 -*-
 def username_checker(self):
     chooser = 0

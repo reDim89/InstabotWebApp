@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Press the button to stop bot</h1>
+	<form class='main-form' method='POST'>
+		<ul>
+			<li>
+				{{ form.refresh }}
+			</li>
+		</ul>
+		<ul>
+			<li>
+				{{ form.logout }}
+			</li>
+		</ul>
+	</form>
+{% endblock %}

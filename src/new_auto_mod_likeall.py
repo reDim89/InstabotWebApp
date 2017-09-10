@@ -1,3 +1,5 @@
+#!flask/bin/python
+
 def new_like_all_exist_media(self):
     i = self.current_index
     # Media count by this user.

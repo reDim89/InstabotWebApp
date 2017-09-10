@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!flask/bin/python
 # -*- coding: utf-8 -*-
 import json
 import random
 import time
 
-from user_info import get_user_info
+from src.user_info import get_user_info
 
 
 def get_media_id_user_feed(self):

@@ -5,15 +5,20 @@
 		{% else %}
 		<title>notitle</title>
 		{% endif %}
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
 	</head>
 	<body>
-	{% block content %}{% endblock %}
-	</body>
-	{% with messages = get_flashed_messages() %}
+		{% block content %}{% endblock %}
+		<pre>
+		<code>
+		{% with messages = get_flashed_messages() %}
   		{% if messages %}
 		    {% for message in messages %}
-		      <code style='color: #FF0000'>{{ message }}</code></br>
+		      {{ message }}</br>
 		    {% endfor %}
 	  	{% endif %}
+	  	</code>
+	  	</pre>
 	{% endwith %}
+	</body>
 </html>

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!flask/bin/python
 # -*- coding: utf-8 -*-
 
 import atexit
@@ -14,8 +14,8 @@ if 'threading' in sys.modules:
     del sys.modules['threading']
 import time
 import requests
-from unfollow_protocol import unfollow_protocol
-from userinfo import UserInfo
+from src.unfollow_protocol import unfollow_protocol
+from src.userinfo import UserInfo
 
 
 class InstaBot:
@@ -130,7 +130,7 @@ class InstaBot:
                  max_like_for_one_tag=5,
                  unfollow_break_min=15,
                  unfollow_break_max=30,
-                 log_mod=0,
+                 log_mod=1,
                  proxy="",
                  user_blacklist={},
                  tag_blacklist=[],
@@ -297,6 +297,7 @@ class InstaBot:
         except:
             self.write_log("Logout error!")
 
+
     def cleanup(self, *_):
         # Unfollow all bot follow
         if self.follow_counter >= self.unfollow_counter:
@@ -315,7 +316,13 @@ class InstaBot:
         # Logout
         if (self.login_status):
             self.logout()
-        exit(0)
+        # exit(0)
+
+    def exit_no_cleanup(self, *_):
+        # Logout
+        if (self.login_status):
+            self.logout()
+        # exit(0)
 
     def get_media_id_by_tag(self, tag):
         """ Get media ID set, by your hashtag """
