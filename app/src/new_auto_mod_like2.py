@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import random
 
-from src.new_auto_mod_likeall import new_like_all_exist_media
+from app.src.new_auto_mod_likeall import new_like_all_exist_media
 
 
 def new_auto_mod_like2(self):

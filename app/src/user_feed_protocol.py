@@ -3,8 +3,8 @@
 import random
 import time
 
-from src.new_auto_mod_like2 import new_auto_mod_like2
-from src.user_feed import get_media_id_user_feed
+from app.src.new_auto_mod_like2 import new_auto_mod_like2
+from app.src.user_feed import get_media_id_user_feed
 
 
 def user_feed_protocol(self):

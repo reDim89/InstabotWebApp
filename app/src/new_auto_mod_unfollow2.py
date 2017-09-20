@@ -1,6 +1,6 @@
 #!venv/bin/python
 # -*- coding: utf-8 -*-
-from src.new_unfollow import new_unfollow
+from app.src.new_unfollow import new_unfollow
 
 
 def new_auto_mod_unfollow2(self):

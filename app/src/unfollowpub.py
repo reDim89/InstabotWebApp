@@ -3,8 +3,8 @@
 import random
 import time
 
-from src.instabot import InstaBot
-from src.userinfo import UserInfo
+from app.src.instabot import InstaBot
+from app.src.userinfo import UserInfo
 
 #use userinfo
 ui = UserInfo()

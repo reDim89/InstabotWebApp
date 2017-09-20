@@ -3,9 +3,9 @@
 import random
 import time
 
-from src.likers_protocol import likers_protocol
-from src.new_auto_mod_unfollow2 import new_auto_mod_unfollow2
-from src.user_feed import get_media_id_user_feed
+from app.src.likers_protocol import likers_protocol
+from app.src.new_auto_mod_unfollow2 import new_auto_mod_unfollow2
+from app.src.user_feed import get_media_id_user_feed
 
 
 def likers_graber_protocol(self):

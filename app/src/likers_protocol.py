@@ -3,8 +3,8 @@
 
 import random
 
-from src.post_page import get_user_id_post_page
-from src.username_checker import username_checker
+from app.src.post_page import get_user_id_post_page
+from app.src.username_checker import username_checker
 
 
 def likers_protocol(self):

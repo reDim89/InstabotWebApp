@@ -3,10 +3,10 @@
 import random
 import time
 
-from src.likers_graber_protocol import likers_graber_protocol
-from src.new_auto_mod_unfollow2 import new_auto_mod_unfollow2
-from src.recent_feed import get_media_id_recent_feed
-from src.user_feed import get_media_id_user_feed
+from app.src.likers_graber_protocol import likers_graber_protocol
+from app.src.new_auto_mod_unfollow2 import new_auto_mod_unfollow2
+from app.src.recent_feed import get_media_id_recent_feed
+from app.src.user_feed import get_media_id_user_feed
 
 
 def feed_scanner(self):

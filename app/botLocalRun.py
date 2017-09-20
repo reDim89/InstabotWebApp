@@ -1,8 +1,8 @@
-from src.check_status import check_status
-from src.feed_scanner import feed_scanner
-from src.follow_protocol import follow_protocol
-from src.instabot import InstaBot
-from src.unfollow_protocol import unfollow_protocol
+from app.src.check_status import check_status
+from app.src.feed_scanner import feed_scanner
+from app.src.follow_protocol import follow_protocol
+from app.src.instabot import InstaBot
+from app.src.unfollow_protocol import unfollow_protocol
 
 bot = InstaBot(login='dmtriy.taranov',
                password='Do#@4S84&f',
