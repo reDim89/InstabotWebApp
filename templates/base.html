@@ -1,0 +1,26 @@
+<html>
+	<head>
+		{% if title %}
+		<title>{{ title }}</title>
+		{% else %}
+		<title>notitle</title>
+		{% endif %}
+		<link rel="stylesheet" type="text/css" href="{{ app.router.static.url_for(filename='styles.css') }}">
+	</head>
+	<body>
+		{% block content %}{% endblock %}
+		{% if log %}
+			<pre>
+			<code>
+				{{ log }}
+		  	</code>
+		  	</pre>
+		{% elif error %}
+			<pre>
+			<code>
+				{{ error }}
+		  	</code>
+		  	</pre>
+		{% endif %}
+	</body>
+</html>

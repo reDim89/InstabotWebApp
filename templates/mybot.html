@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Press the button to stop bot</h1>
+	<form class='main-form' method='POST'>
+		<ul>
+			<li>
+				<input type='submit' name='refresh' value='Обновить лог'/>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<input type='submit' name='logout' value='Выйти'/>
+			</li>
+		</ul>
+	</form>
+{% endblock %}
