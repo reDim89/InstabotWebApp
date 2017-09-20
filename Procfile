@@ -1,1 +1,1 @@
-web: gunicorn app.main:app --bind 127.0.0.2:8080 --worker-class aiohttp.worker.GunicornWebWorker
+web: gunicorn app.main:app --localhost:8080 --worker-class aiohttp.worker.GunicornWebWorker
