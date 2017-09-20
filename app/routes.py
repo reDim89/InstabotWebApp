@@ -1,4 +1,4 @@
-from views import index, login, mybot, show_log
+from app.views import index, login, mybot, show_log
 
 
 def setup_routes(app):
