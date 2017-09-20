@@ -2,7 +2,7 @@ import aiohttp_jinja2
 import jinja2
 
 from aiohttp import web
-from routes import setup_routes
+from app.routes import setup_routes
 
 
 app = web.Application()
