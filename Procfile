@@ -1,1 +1,1 @@
-web: gunicorn instabot:app --config config/gunicorn.conf
+web: gunicorn app:app --config config/gunicorn.conf
