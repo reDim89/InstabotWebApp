@@ -5,8 +5,8 @@ import aiohttp_jinja2
 import aiohttp
 
 
-from src.instabot import InstaBot
-from src.stoppable_thread import StoppableThread
+from app.src.instabot import InstaBot
+from app.src.stoppable_thread import StoppableThread
 
 from threading import Thread
 
