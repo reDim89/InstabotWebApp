@@ -15,8 +15,8 @@ import threading
 #    del sys.modules['threading']
 import time
 import requests
-from src.unfollow_protocol import unfollow_protocol
-from src.userinfo import UserInfo
+from app.src.unfollow_protocol import unfollow_protocol
+from app.src.userinfo import UserInfo
 
 
 class InstaBot:
