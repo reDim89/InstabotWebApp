@@ -1,1 +1,1 @@
-web: gunicorn run-heroku:app
+web: gunicorn web:main --config config/gunicorn.conf
