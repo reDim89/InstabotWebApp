@@ -81,7 +81,7 @@ async def show_log(request):
 
         # Fetch log data from bot instance and re-render page
 
-        context = {'title': 'Bot control panel', log: bot.log_full_text}
+        context = {'title': 'Bot control panel', 'log': bot.log_full_text}
         return aiohttp_jinja2.render_template('mybot.html', request, context)
 
     elif bot and 'logout' in data.keys():
