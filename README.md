@@ -1,8 +1,8 @@
 ## InstaBot Web App
 
-This is a simple <a href="http://flask.pocoo.org/">Flask</a> web app to run <a href="https://github.com/LevPasha">Instabot by Lev Pasha</a>.
+This is a simple <a href="http://gunicorn.org/"> Gunicorn and <a href="http://aiohttp.readthedocs.io/">aiohttp</a> web app to run <a href="https://github.com/LevPasha">Instabot by Lev Pasha</a>.
 
-## How to install and run:
+## How to run locally:
 
 1) Download and install `Python` to your computer.
 
@@ -11,7 +11,12 @@ This is a simple <a href="http://flask.pocoo.org/">Flask</a> web app to run <a h
 3) Download ZIP and extract
 
 4) In command line type the following commands:
+
 ```
-$ export FLASK_APP=run.py
-$ flask run
+$ gunicorn app.main:app --bind localhost:8081 --worker-class aiohttp.worker.GunicornWebWorker
+
 ```
+
+## How to deploy on Heroku:
+
+Just connect your Heroku account to this repository.

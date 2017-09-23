@@ -93,6 +93,7 @@ class InstaBot:
     self_follower = 0
 
     # Log setting.
+    log_full_text = ''
     log_file_path = ''
     log_file = 0
 
@@ -131,7 +132,7 @@ class InstaBot:
                  max_like_for_one_tag=5,
                  unfollow_break_min=15,
                  unfollow_break_max=30,
-                 log_mod=1,
+                 log_mod=0,
                  proxy="",
                  user_blacklist={},
                  tag_blacklist=[],
@@ -177,7 +178,7 @@ class InstaBot:
         self.tag_list = tag_list
         # Get random tag, from tag_list, and like (1 to n) times.
         self.max_like_for_one_tag = max_like_for_one_tag
-        # log_mod 0 to console, 1 to file
+        # log_mod 0 to console, 1 to file, 2 to instance variable
         self.log_mod = log_mod
         self.s = requests.Session()
         # if you need proxy make something like this:
@@ -574,27 +575,34 @@ class InstaBot:
 
     def new_auto_mod(self):
         while True:
-            t = threading.current_thread()
 
-            if t.stopped():
-                break
-            # ------------------- Get media_id -------------------
-            if len(self.media_by_tag) == 0:
-                self.get_media_id_by_tag(random.choice(self.tag_list))
-                self.this_tag_like_count = 0
-                self.max_tag_like_count = random.randint(
-                    1, self.max_like_for_one_tag)
-            # ------------------- Like -------------------
-            self.new_auto_mod_like()
-            # ------------------- Follow -------------------
-            self.new_auto_mod_follow()
-            # ------------------- Unfollow -------------------
-            self.new_auto_mod_unfollow()
-            # ------------------- Comment -------------------
-            self.new_auto_mod_comments()
-            # Bot iteration in 1 sec
-            time.sleep(3)
-            # print("Tic!")
+            # Listener for stopping thread by event
+
+            t = threading.current_thread()
+            try:
+                if t.stopped():
+                    self.log_full_text = ''
+                    self.logout()
+                    exit(0)
+
+            finally:
+                # ------------------- Get media_id -------------------
+                if len(self.media_by_tag) == 0:
+                    self.get_media_id_by_tag(random.choice(self.tag_list))
+                    self.this_tag_like_count = 0
+                    self.max_tag_like_count = random.randint(
+                        1, self.max_like_for_one_tag)
+                # ------------------- Like -------------------
+                self.new_auto_mod_like()
+                # ------------------- Follow -------------------
+                self.new_auto_mod_follow()
+                # ------------------- Unfollow -------------------
+                self.new_auto_mod_unfollow()
+                # ------------------- Comment -------------------
+                self.new_auto_mod_comments()
+                # Bot iteration in 1 sec
+                time.sleep(3)
+                # print("Tic!")
 
     def new_auto_mod_like(self):
         if time.time() > self.next_iteration["Like"] and self.like_per_day != 0 \
@@ -828,7 +836,7 @@ class InstaBot:
                 return 0
 
     def write_log(self, log_text):
-        """ Write log by print() or logger """
+        """ Write log by print() or logger or instance variable"""
 
         if self.log_mod == 0:
             try:
@@ -855,3 +863,6 @@ class InstaBot:
                 self.logger.info(log_text)
             except UnicodeEncodeError:
                 print("Your text has unicode problem!")
+        elif self.log_mod == 2:
+            # Add log string to instance variable
+                self.log_full_text += log_text + '\n'
