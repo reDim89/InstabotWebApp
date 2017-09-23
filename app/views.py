@@ -15,8 +15,8 @@ async def index(request):
     '''
     Render main page template and status message (if exists).
     '''
-    await request
-    message = request.app['message']
+
+    message = await getMessage(request)
 
     context = {'title': 'Main', 'message': message}
     return aiohttp_jinja2.render_template('index.html', request, context)
@@ -61,7 +61,6 @@ async def mybot(request):
     Render bot page template.
     '''
 
-    await request
     context = {'title': 'Bot control panel'}
     return aiohttp_jinja2.render_template('mybot.html', request, context)
 
@@ -75,8 +74,8 @@ async def show_log(request):
 
     # Get bot instance and thread in which it's running
 
-    t = request.app['thread']
-    bot = request.app['bot']
+    t = await getThread(request)
+    bot = await getBot(request)
 
     # Check data from submit button
 
@@ -101,6 +100,24 @@ async def show_log(request):
 
         request.app['message'] = 'Your are not authorized'
         return aiohttp.web.HTTPFound('/')
+
+
+async def getMessage(request):
+
+    message = request.app['message']
+    return message
+
+
+async def getBot(request):
+
+    bot = request.app['bot']
+    return bot
+
+
+async def getThread(request):
+
+    t = request.app['thread']
+    return t
 
 
 def runBot(bot):
