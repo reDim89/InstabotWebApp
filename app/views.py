@@ -57,7 +57,7 @@ async def login(request):
 
     # Store pointers to thread and bot in app instance
 
-    request.app['thread'] = t
+    request.app['queue'] = q
     request.app['bot'] = bot
 
     return aiohttp.web.HTTPFound('/mybot')
@@ -79,10 +79,10 @@ async def show_log(request):
 
     data = await request.post()
 
-    # Get bot instance and thread in which it's running
+    # Get bot instance
 
-    t = await getThread(request)
     bot = await getBot(request)
+    q = await getQueue(request)
 
     # Check data from submit button
 
@@ -95,9 +95,10 @@ async def show_log(request):
 
     elif bot and 'logout' in data.keys():
 
-        # Send stop event and go to main page
+        # Schedule logout event and go to main page
 
-        t.stop()
+        q.enqueue(bot.logout())
+        q.enqueue(exit(0))
         request.app['message'] = 'Bot is stopped'
         return aiohttp.web.HTTPFound('/')
 
@@ -121,10 +122,10 @@ async def getBot(request):
     return bot
 
 
-async def getThread(request):
+async def getQueue(request):
 
-    t = request.app['thread']
-    return t
+    q = request.app['queue']
+    return q
 
 
 def runBot(bot):
