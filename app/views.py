@@ -53,7 +53,7 @@ async def login(request):
     '''
 
     q = Queue(connection=conn)
-    q.enqueue(runBot(bot))
+    q.enqueue(runBot, bot)
 
     # Store pointers to thread and bot in app instance
 
