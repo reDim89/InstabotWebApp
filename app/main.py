@@ -13,4 +13,3 @@ app['message'] = ''
 aiohttp_jinja2.setup(
     app, loader=jinja2.FileSystemLoader('templates'))
 setup_routes(app)
-web.run_app(app)
