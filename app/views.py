@@ -15,7 +15,9 @@ async def index(request):
     '''
     Render main page template and status message (if exists).
     '''
-    message = await request.app['message']
+    async with request.app['message']:
+        message = request.app['message']
+
     context = {'title': 'Main', 'message': message}
     return aiohttp_jinja2.render_template('index.html', request, context)
 
