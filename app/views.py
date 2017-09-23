@@ -7,8 +7,11 @@ import aiohttp
 
 from app.src.instabot import InstaBot
 from app.src.stoppable_thread import StoppableThread
+from rq import Queue
+from app.worker import conn
 
 from threading import Thread
+
 
 
 async def index(request):
@@ -43,10 +46,14 @@ async def login(request):
                    log_mod=2)
 
     # Start separate thread able to receive stop event
-
+    '''
     t = StoppableThread(target=runBot, args=(bot, ))
     t.setDaemon(True)
     t.start()
+    '''
+
+    q = Queue(connection=conn)
+    q.enqueue(runBot(bot))
 
     # Store pointers to thread and bot in app instance
 
