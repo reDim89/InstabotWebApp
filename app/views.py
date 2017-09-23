@@ -15,8 +15,8 @@ async def index(request):
     '''
     Render main page template and status message (if exists).
     '''
-    async with request.app['message']:
-        message = request.app['message']
+    await request
+    message = request.app['message']
 
     context = {'title': 'Main', 'message': message}
     return aiohttp_jinja2.render_template('index.html', request, context)
@@ -56,10 +56,12 @@ async def login(request):
     return aiohttp.web.HTTPFound('/mybot')
 
 
-def mybot(request):
+async def mybot(request):
     '''
     Render bot page template.
     '''
+
+    await request
     context = {'title': 'Bot control panel'}
     return aiohttp_jinja2.render_template('mybot.html', request, context)
 
@@ -73,8 +75,8 @@ async def show_log(request):
 
     # Get bot instance and thread in which it's running
 
-    t = await request.app['thread']
-    bot = await request.app['bot']
+    t = request.app['thread']
+    bot = request.app['bot']
 
     # Check data from submit button
 
